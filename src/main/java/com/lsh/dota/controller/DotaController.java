@@ -1,7 +1,7 @@
 package com.lsh.dota.controller;
 
 import com.lsh.dota.service.AnalyseService;
-import com.lsh.dota.service.DotaService;
+import com.lsh.dota.service.OpenDotaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DotaController {
 
     @Autowired
-    private DotaService dotaService;
+    private OpenDotaService openDotaService;
     @Autowired
     private AnalyseService analyseService;
 
@@ -30,7 +30,7 @@ public class DotaController {
     @GetMapping("/recentMatches")
     public String recentMatches(@RequestParam("accountId") String accountId){
 
-        String matches = dotaService.recentMatches(accountId);
+        String matches = openDotaService.recentMatches(accountId);
         analyseService.analyseMatch(matches);
         return null;
     }
