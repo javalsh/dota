@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Date 2020/10/21 21:27
  */
 @FeignClient(url = "https://api.opendota.com/api",name = "opendota")
-public interface DotaService {
+public interface OpenDotaService {
 
     @GetMapping("/players/{account_id}/recentMatches")
     String recentMatches(@PathVariable String account_id);
