@@ -17,8 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/dota")
 public class DotaController {
 
-    @Autowired
-    private OpenDotaService openDotaService;
+
     @Autowired
     private AnalyseService analyseService;
 
@@ -27,12 +26,17 @@ public class DotaController {
         return "success";
     }
 
+    @GetMapping("/recentMatche")
+    public String recentMatche(@RequestParam("accountId") String accountId){
+
+
+        return analyseService.analyseRecentMatch(accountId);
+    }
     @GetMapping("/recentMatches")
     public String recentMatches(@RequestParam("accountId") String accountId){
 
-        String matches = openDotaService.recentMatches(accountId);
-        analyseService.analyseMatch(matches);
-        return null;
+
+        return analyseService.analyseRecentMatchs(accountId);
     }
 
 }

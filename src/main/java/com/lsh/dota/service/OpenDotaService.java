@@ -16,4 +16,7 @@ public interface OpenDotaService {
 
     @GetMapping("/players/{account_id}/recentMatches")
     String recentMatches(@PathVariable String account_id);
+
+    @GetMapping("/players/{account_id}")
+    String players(@PathVariable String account_id);
 }
